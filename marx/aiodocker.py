@@ -2,6 +2,7 @@
 
 import aiohttp
 import json
+import datetime as dt
 
 class Docker:
     def __init__(self, url):
@@ -16,6 +17,8 @@ class Docker:
             try:
                 chunk = yield from response.content.read()  # XXX: Correct?
                 data = json.loads(chunk.decode('utf-8'))
+                if 'time' in data:
+                    data['time'] = dt.datetime.fromtimestamp(data['time'])
                 callback(data)
             except aiohttp.EofStream:
                 break
