@@ -12,7 +12,7 @@
             [hy [HyKeyword]])
     (let [[docker (Docker "http://127.0.0.1:4243")]]
       ~@body
-      (.run-until-complete loop
+      (schedule-coroutine
         (.events docker
           (fn [data]
             (emit (+ (get :foo 0) ":" "docker-" (get data "status")) data)
