@@ -2,6 +2,5 @@
 
 
 (marx
-  ; (on :docker (print "Generic" event))
-  (on :docker-create
+  (on :docker
     (print event)))
