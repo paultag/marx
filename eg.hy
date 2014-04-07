@@ -2,5 +2,5 @@
 
 
 (marx
-  (on :docker
-    (print event)))
+  (on :docker-start
+    (print "Started a thing")))
