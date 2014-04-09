@@ -3,5 +3,6 @@
 
 (marx
   (on :docker-start
-    (go-define [[test (.show (get event "container"))]]
-      (print test))))
+    (define [[container (get event "container")]
+             [show (go (.show container))]]
+      (print show))))
