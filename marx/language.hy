@@ -25,7 +25,7 @@
 (defmacro marx [&rest body]
   `(trip
     (import [aiodocker.docker [Docker]] [hy [HyKeyword]])
-    (let [[docker (Docker "http://127.0.0.1:4243")]
+    (let [[docker (Docker)]
           [events docker.events]
           [queue (.listen events)]]
       (spawn (events.run))
